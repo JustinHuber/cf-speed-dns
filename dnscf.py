@@ -88,7 +88,7 @@ def main():
     ip_addresses_str = get_cf_speed_test_ip()
     ip_addresses = ip_addresses_str.split(',')
     dns_records = get_dns_records(CF_DNS_NAME)
-    print dns_records
+    print(dns_records)
     push_plus_content = []
     # 遍历 IP 地址列表
     for index, ip_address in enumerate(ip_addresses):
