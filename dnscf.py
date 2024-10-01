@@ -61,7 +61,6 @@ def update_dns_record(record_id, name, cf_ip):
     if response.status_code == 200:
         print(f"cf_dns_change success: ---- Time: " + str(
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) + " ---- ip：" + str(cf_ip))
-        break
         return "ip:" + str(cf_ip) + "解析" + str(name) + "成功"
     else:
         traceback.print_exc()
@@ -91,11 +90,15 @@ def main():
     dns_records = get_dns_records(CF_DNS_NAME)
     print(dns_records)
     push_plus_content = []
+
+    # 执行 DNS 最优IP变更
+    dns = update_dns_record(dns_records[0], CF_DNS_NAME, ip_address)
+
     # 遍历 IP 地址列表
-    for index, ip_address in enumerate(ip_addresses):
-        # 执行 DNS 变更
-        dns = update_dns_record(dns_records[0], CF_DNS_NAME, ip_address)
-        push_plus_content.append(dns)
+    # for index, ip_address in enumerate(ip_addresses):
+    #     # 执行 DNS 变更
+    #     dns = update_dns_record(dns_records[0], CF_DNS_NAME, ip_address)
+    #     push_plus_content.append(dns)
 
     # push_plus('\n'.join(push_plus_content))
 
