@@ -63,7 +63,7 @@ def update_dns_record(record_id, name, cf_ip):
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) + " ---- ip：" + str(cf_ip))
         return "ip:" + str(cf_ip) + "解析" + str(name) + "成功"
     else:
-        traceback.print_exc()
+        traceback.print_exc() as e
         print(f"cf_dns_change ERROR: ---- Time: " + str(
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) + " ---- MESSAGE: " + str(e))
         return "ip:" + str(cf_ip) + "解析" + str(name) + "失败"
